@@ -1,0 +1,12 @@
+*AJOUT* PRE*==if [[ "$GOTOSORTIPRET" == "FIN" ]]; then commands="$(jv_get_commands)"; jv_handle_order "OPETUGE"; return; else echo "$order" > ~/PRET.txt && jv_pg_testprets; fi && if [[ "$GOTOSORTIPRET" == "FIN" ]]; then commands="$(jv_get_commands)"; jv_handle_order "OPETUGE"; return; fi
+>(*)==if [[ "$GOTOSORTIPRET" == "FIN" ]]; then commands="$(jv_get_commands)"; jv_handle_order "OPETUGE"; return; else jv_pg_testprets; if [[ "$GOTOSORTIPRET" == "FIN" ]]; then commands="$(jv_get_commands)"; jv_handle_order "OPETUGE"; return; fi; return; fi
+*SUPPRIME* TOU* PRET*==jv_pg_ct_supprime_prettout && if [[ "$GOTOSORTIPRET" == "Fin" ]]; then GOTOSORTIPRET=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTIPRET"; return; fi 
+>(*)==if [[ "$order" =~ "oui" ]]; then jv_pg_ct_supprime_prettout1; else say "Ok je laisse..."; fi
+SUPPRIME (*) PRET*==echo "(1)" > ~/PRET.txt && jv_pg_ct_supprime_pret
+LI* PRE*==jv_pg_ct_lis_pret
+*ENVOI*PRE*MAIL*==jv_pg_ct_envoi_pret_email
+*ENVOI*PRE*SMS*==jv_pg_ct_envoi_pret_sms && if [[ "$GOTOSORTIPRET" == "Fin" ]]; then GOTOSORTIPRET=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTIPRET"; return; fi
+>(*)==if [[ "$GOTOSORTIPRET" == "Fin" ]]; then GOTOSORTIPRET=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTIPRET"; return; else jv_pg_ct_envoi_pret_sms1; fi
+
+OPETUGE==GOTOSORTIPRET=""; testprets_reset; return; 
+GOTOSORTIPRET==

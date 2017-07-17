@@ -1,0 +1,3 @@
+$verbose && jv_debug "DEBUG: program_startup hook"
+# Je fonctionne au démarage de Jarvis
+

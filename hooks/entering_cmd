@@ -1,0 +1,4 @@
+$verbose && jv_debug "DEBUG: entering_cmd hook"
+# Je fonctionne dès la détection du trigger
+
+jv_pg_ct_datereprendre_pret
